@@ -27,33 +27,3 @@ class WGS84Coord:
         return self._latitude
 
     latitude = property(get_latitude, set_latitude)
-
-
-def line():
-    print(10 * '---')
-
-
-def test(lon, lat):
-    print(f'> Input: {lon}°, {lat}°')
-    c1 = WGS84Coord()
-    c1.longitude = lon
-    c1.latitude = lat
-    print(f'> Variante 1: {c1.longitude}°, {c1.latitude}°')
-    c2 = WGS84Coord(lon, lat)
-    print(f'> Variante 2: {c2.longitude}°, {c2.latitude}°')
-    line()
-
-
-line()
-test(0, 0)
-test(10, 30)
-test(-180, 90)
-test(180, -90)
-test(-200, 100)
-test(200, -100)
-test(360, 0)
-test(-360, 0)
-test(1080, 0)
-test(-1080, 0)
-test(1125, 0)
-test(-1125, 0)
