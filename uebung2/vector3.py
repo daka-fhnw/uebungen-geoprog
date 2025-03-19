@@ -1,6 +1,6 @@
 class Vector3:
 
-    def __init__(self, x=0.0, y=0.0, z=0.0):
+    def __init__(self, x=0, y=0, z=0):
         self.x = x
         self.y = y
         self.z = z
@@ -23,14 +23,14 @@ class Vector3:
     def __rmul__(self, other):
         return self._scalar_mul(other)
 
-    def len(self):
-        return (self.x ** 2 + self.y ** 2 + self.z ** 2) ** 0.5
-
     def _comp_mul(self, other):
         return Vector3(self.x * other.x, self.y * other.y, self.z * other.z)
 
     def _scalar_mul(self, scalar):
         return Vector3(self.x * scalar, self.y * scalar, self.z * scalar)
+
+    def len(self):
+        return (self.x ** 2 + self.y ** 2 + self.z ** 2) ** 0.5
 
     def cross(self, other):
         x = (self.y * other.z) - (self.z * other.y)
@@ -45,5 +45,4 @@ class Vector3:
         return x + y + z
 
     def normalize(self):
-        factor = 1 / self.len()
-        return self._scalar_mul(factor)
+        return self._scalar_mul(1 / self.len())
