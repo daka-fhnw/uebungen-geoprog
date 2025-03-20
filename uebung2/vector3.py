@@ -45,4 +45,8 @@ class Vector3:
         return x + y + z
 
     def normalize(self):
-        return self._scalar_mul(1 / self.len())
+        length = self.len()
+        if length > 0:
+            return self._scalar_mul(1 / length)
+        else:
+            return self

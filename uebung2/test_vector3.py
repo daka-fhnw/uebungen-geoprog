@@ -102,6 +102,12 @@ class TestVector3(unittest.TestCase):
         result = vector1.dot(vector2)
         self.assertEqual(-7.0, result)
 
+    def test_normalize_0(self):
+        vector = Vector3(0, 0, 0)
+        result = vector.normalize()
+        self.assertEqual(0, result.len())
+        self._verify_vector(result, 0, 0, 0)
+
     def test_normalize_1(self):
         vector = Vector3(6, 3, 6)
         result = vector.normalize()
