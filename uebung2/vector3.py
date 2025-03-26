@@ -17,8 +17,10 @@ class Vector3:
     def __mul__(self, other):
         if type(other) == Vector3:
             return self._comp_mul(other)
-        else:
+        elif type(other) == int or type(other) == float:
             return self._scalar_mul(other)
+        else:
+            raise TypeError(f"Parameter muss Vector3 oder scalar sein, ist aber {type(other)}.")
 
     def __rmul__(self, other):
         return self._scalar_mul(other)
@@ -33,12 +35,16 @@ class Vector3:
         return (self.x ** 2 + self.y ** 2 + self.z ** 2) ** 0.5
 
     def cross(self, other):
+        if not type(other) == Vector3:
+            raise TypeError(f"Parameter muss Vector3 sein, ist aber {type(other)}.")
         x = (self.y * other.z) - (self.z * other.y)
         y = (self.z * other.x) - (self.x * other.z)
         z = (self.x * other.y) - (self.y * other.x)
         return Vector3(x, y, z)
 
     def dot(self, other):
+        if not type(other) == Vector3:
+            raise TypeError(f"Parameter muss Vector3 sein, ist aber {type(other)}.")
         x = self.x * other.x
         y = self.y * other.y
         z = self.z * other.z
