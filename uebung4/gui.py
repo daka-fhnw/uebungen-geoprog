@@ -1,4 +1,5 @@
 import sys
+
 from PyQt5.QtWidgets import *
 
 
@@ -55,15 +56,16 @@ class Fenster(QMainWindow):
         self.show()
 
     def save(self):
-        firstname = self.firstname_edit.text()
-        lastname = self.lastname_edit.text()
-        birthdate = self.birthdate_edit.text()
-        address = self.address_edit.text()
-        postalcode = self.postalcode_edit.text()
-        location = self.location_edit.text()
-        country = self.country_combo.currentText()
-        f = open('save.txt', mode='w', encoding='utf8')
-        f.write(f"{firstname}, {lastname}, {birthdate}, {address}, {postalcode}, {location}, {country}")
+        f = open("save.txt", "w", encoding="utf-8")
+        f.write(", ".join([
+            self.firstname_edit.text(),
+            self.lastname_edit.text(),
+            self.birthdate_edit.text(),
+            self.address_edit.text(),
+            self.postalcode_edit.text(),
+            self.location_edit.text(),
+            self.country_combo.currentText(),
+        ]))
         f.close()
 
     def quit(self):
