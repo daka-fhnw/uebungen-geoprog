@@ -31,6 +31,12 @@ class Fenster(QMainWindow):
         file_menu.addAction(save_action)
         file_menu.addAction(quit_action)
 
+        show_on_map_action = QAction("Auf Karte zeigen", self)
+        show_on_map_action.triggered.connect(self.show_on_map)
+
+        view_menu = menubar.addMenu("Ansicht")
+        view_menu.addAction(show_on_map_action)
+
     def create_layout(self):
         self.setWindowTitle("GUI-Programmierung")
         self.setMinimumWidth(600)
