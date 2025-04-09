@@ -1,5 +1,6 @@
 import sys
 
+import csv
 from PyQt5.QtWidgets import *
 
 
@@ -12,12 +13,11 @@ class Fenster(QMainWindow):
 
     def create_menubar(self):
         menubar = self.menuBar()
-
+       
         save_action = QAction("Save", self)
         save_action.triggered.connect(self.save)
 
         quit_action = QAction("Quit", self)
-        quit_action.setMenuRole(QAction.QuitRole)
         quit_action.triggered.connect(self.quit)
 
         file_menu = menubar.addMenu("File")
@@ -56,8 +56,7 @@ class Fenster(QMainWindow):
         self.show()
 
     def save(self):
-        f = open("save.txt", "w", encoding="utf-8")
-        f.write(", ".join([
+        data = [
             self.firstname_edit.text(),
             self.lastname_edit.text(),
             self.birthdate_edit.text(),
@@ -65,8 +64,11 @@ class Fenster(QMainWindow):
             self.postalcode_edit.text(),
             self.location_edit.text(),
             self.country_combo.currentText(),
-        ]))
-        f.close()
+        ]
+        file = open("save.csv", "w", encoding="utf-8")
+        writer = csv.writer(file, delimiter=",", lineterminator="\n")
+        writer.writerow(data)
+        file.close()
 
     def quit(self):
         self.close()
