@@ -1,5 +1,6 @@
 import os
 import sys
+import urllib.parse
 
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
@@ -23,10 +24,10 @@ class Fenster(QMainWindow):
         self.button.clicked.connect(self.show_on_map)
 
     def show_on_map(self):
-        lon = self.edit_laenge.text()
-        lat = self.edit_breite.text()
-        if lon != '' and lat != '':
-            link = f'https://www.google.ch/maps/place/{lat},{lon}'
+        laenge = urllib.parse.quote(self.edit_laenge.text())
+        breite = urllib.parse.quote(self.edit_breite.text())
+        if laenge != '' and breite != '':
+            link = f'https://www.google.ch/maps/place/{breite},{laenge}'
             QDesktopServices.openUrl(QUrl(link))
 
 
