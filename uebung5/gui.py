@@ -88,7 +88,7 @@ class Fenster(QMainWindow):
         QDesktopServices.openUrl(QUrl(link))
 
     def load(self):
-        filename, filter = QFileDialog.getOpenFileName(self, "Datei öffnen")
+        filename, filter = QFileDialog.getOpenFileName(self, "Datei öffnen", "", "CSV (*.csv);;Textdatei (*.txt)")
         if filename != "":
             file = open(filename, "r", encoding="utf-8")
             reader = csv.reader(file, delimiter=",", lineterminator="\n")
@@ -117,7 +117,7 @@ class Fenster(QMainWindow):
             self.location_edit.text(),
             self.country_combo.currentText(),
         ]
-        filename, filter = QFileDialog.getSaveFileName(self, "Datei speichern")
+        filename, filter = QFileDialog.getSaveFileName(self, "Datei speichern", "", "CSV (*.csv);;Textdatei (*.txt)")
         if filename != "":
             file = open(filename, "w", encoding="utf-8")
             writer = csv.writer(file, delimiter=",", lineterminator="\n")
