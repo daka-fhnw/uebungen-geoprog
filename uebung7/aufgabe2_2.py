@@ -1,0 +1,13 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+def function(x, y):
+    return np.exp(-x**2) * np.sin(y)
+
+x = np.linspace(-np.pi, np.pi, 1000)
+y = np.linspace(-np.pi, np.pi, 1000)
+X, Y = np.meshgrid(x, y)
+Z = function(X, Y)
+
+plt.pcolormesh(X, Y, Z)
+plt.show()

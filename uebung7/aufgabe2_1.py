@@ -1,6 +1,5 @@
 import matplotlib.pyplot as plt
 import numpy as np
-import math
 
 def function(x, y):
     return np.multiply(np.exp(np.negative(np.power(x, 2))), np.sin(y))
