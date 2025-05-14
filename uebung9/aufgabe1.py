@@ -13,10 +13,10 @@ shapes = (
 
 def plot_shape(shape):
     if shape.geom_type == "Point":
-        plt.plot(shape.x, shape.y, "o")
+        x, y = shape.xy
+        plt.plot(x, y, "o")
     elif shape.geom_type == "LineString":
-        x = [x for x, y in shape.coords]
-        y = [y for x, y in shape.coords]
+        x, y = shape.xy
         plt.plot(x, y, "-")
     elif shape.geom_type == "Polygon":
         x, y = shape.exterior.xy
@@ -31,5 +31,5 @@ for shape in shapes:
         f"type={shape.geom_type}, area={shape.area:.1f}, length={shape.length:.1f}")
     plot_shape(shape)
 
-
+plt.axis("equal")
 plt.show()
